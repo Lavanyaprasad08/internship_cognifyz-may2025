@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Developer Internship - Cognifyz Technologies (V2)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0e2e2; /* Lighter blue-gray background */
+        }
+        /* Modal overlay styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .modal-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+        /* Modal content styles */
+        .modal-content {
+            background-color: white;
+            padding: 2.5rem; /* Slightly more padding */
+            border-radius: 1rem; /* More rounded corners */
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); /* Stronger shadow */
+            max-width: 90%;
+            width: 550px; /* Slightly wider */
+            position: relative;
+            transform: scale(0.95); /* Subtle zoom in effect */
+            transition: transform 0.3s ease;
+        }
+        .modal-overlay.open .modal-content {
+            transform: scale(1);
+        }
+        .close-button {
+            position: absolute;
+            top: 1.25rem;
+            right: 1.25rem;
+            font-size: 1.75rem; /* Larger close button */
+            cursor: pointer;
+            color: #64748b; /* slate-500 */
+            transition: color 0.2s ease;
+        }
+        .close-button:hover {
+            color: #1e293b; /* slate-900 */
+        }
+    </style>
+</head>
+<body class="antialiased text-gray-800">
+    <div class="min-h-screen flex flex-col items-center justify-center py-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-5xl w-full bg-white shadow-xl rounded-2xl p-10 space-y-10">
+            <!-- Header Section -->
+            <header class="text-center">
+                <h1 class="text-5xl sm:text-6xl font-extrabold text-blue-700 mb-6 leading-tight">
+                    <span class="block">Web Developer Internship</span>
+                    <span class="block text-blue-900 mt-2">Opportunities at Cognifyz Technologies</span>
+                </h1>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Accelerate your journey in web development with our intensive internship program.
+                </p>
+            </header>
+
+            <!-- Introduction Section -->
+            <section class="text-center md:text-left border-t-2 border-blue-100 pt-10">
+                <h2 class="text-3xl font-bold text-gray-900 mb-5">Ignite Your Web Development Career</h2>
+                <p class="text-lg text-gray-700 leading-relaxed">
+                    Join Cognifyz Technologies for a transformative *3-month Web Developer Internship. This program is meticulously crafted to offer you unparalleled hands-on experience, working alongside our expert teams on **real-world web applications*. You'll delve into the latest technologies, contribute to impactful projects, and build a robust portfolio that sets you apart in the competitive tech landscape. It's more than an internship; it's a launchpad for your future.
+                </p>
+            </section>
+
+            <!-- About Cognifyz Technologies Section -->
+            <section class="text-center md:text-left border-t-2 border-blue-100 pt-10">
+                <h2 class="text-3xl font-bold text-gray-900 mb-5">About Cognifyz Technologies</h2>
+                <p class="text-lg text-gray-700 leading-relaxed">
+                    Cognifyz Technologies is a leading innovator in the technology sector, specializing in *Data Science, Artificial Intelligence, Machine Learning, and advanced Data Analytics solutions. We are committed to empowering businesses with cutting-edge, cost-effective, and user-friendly software solutions that drive **digital transformation*. Our mission is to help clients grow by overcoming technological challenges, focusing on delivering high-quality, innovative products and services that consistently exceed expectations.
+                </p>
+            </section>
+
+            <!-- Highlights Section -->
+            <section class="border-t-2 border-blue-100 pt-10">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6 text-center">Why Intern with Cognifyz?</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-lg text-gray-700">
+                    <div class="bg-blue-50 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+                        <h3 class="font-semibold text-blue-800 text-xl mb-3">Hands-On Projects</h3>
+                        <p>Gain invaluable experience by contributing to live, impactful web development projects from day one.</p>
+                    </div>
+                    <div class="bg-blue-50 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+                        <h3 class="font-semibold text-blue-800 text-xl mb-3">Expert Mentorship</h3>
+                        <p>Learn directly from senior web developers who will guide you, share insights, and provide constructive feedback.</p>
+                    </div>
+                    <div class="bg-blue-50 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+                        <h3 class="font-semibold text-blue-800 text-xl mb-3">Skill Mastery</h3>
+                        <p>Deepen your expertise in modern frameworks, tools, and best practices, enhancing your technical toolkit.</p>
+                    </div>
+                    <div class="bg-blue-50 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+                        <h3 class="font-semibold text-blue-800 text-xl mb-3">Professional Networking</h3>
+                        <p>Expand your network by connecting with industry professionals and a vibrant community of peers.</p>
+                    </div>
+                    <div class="bg-blue-50 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+                        <h3 class="font-semibold text-blue-800 text-xl mb-3">Career Trajectory</h3>
+                        <p>Build a standout portfolio and open doors to exciting full-time career opportunities post-internship.</p>
+                    </div>
+                    <div class="bg-blue-50 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+                        <h3 class="font-semibold text-blue-800 text-xl mb-3">Innovative Environment</h3>
+                        <p>Thrive in a culture that fosters creativity, continuous learning, and technological innovation.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Qualifications Section -->
+            <section class="border-t-2 border-blue-100 pt-10">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6 text-center">What We're Looking For</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-lg text-gray-700">
+                    <div>
+                        <h3 class="font-semibold text-blue-800 text-xl mb-3">Academic Background</h3>
+                        <ul class="list-disc list-inside space-y-2 pl-4">
+                            <li>Currently enrolled in or recently graduated from a Computer Science, Software Engineering, or related program.</li>
+                            <li>Strong academic record is a plus.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-blue-800 text-xl mb-3">Technical Skills</h3>
+                        <ul class="list-disc list-inside space-y-2 pl-4">
+                            <li>Proficiency in *HTML5, CSS3, and modern JavaScript (ES6+)*.</li>
+                            <li>Familiarity with a front-end framework (e.g., *React, Vue, Angular*) or a backend language (e.g., Node.js, Python) is highly valued.</li>
+                            <li>Understanding of *Git* and version control workflows.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-blue-800 text-xl mb-3">Soft Skills</h3>
+                        <ul class="list-disc list-inside space-y-2 pl-4">
+                            <li>Excellent *problem-solving* abilities and a keen eye for detail.</li>
+                            <li>Strong *communication* and interpersonal skills.</li>
+                            <li>Ability to work effectively both independently and as part of a *team*.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-blue-800 text-xl mb-3">Mindset</h3>
+                        <ul class="list-disc list-inside space-y-2 pl-4">
+                            <li>Passion for web development and a drive for continuous learning.</li>
+                            <li>Proactive and eager to take on new challenges.</li>
+                            <li>Creativity and a user-centric approach to design and development.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Call-to-Action Button -->
+            <section class="text-center pt-10">
+                <button id="applyButtonV2" class="inline-block bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white font-bold py-4 px-10 rounded-full text-xl transition duration-300 ease-in-out transform hover:scale-105 shadow-lg ring-2 ring-blue-300 ring-offset-2">
+                    Apply Now for a Brighter Future!
+                </button>
+                <p class="text-md text-gray-500 mt-5">Don't miss out! Applications close on *june 30, 2025*.</p>
+            </section>
+        </div>
+
+        <!-- Footer Contact Information -->
+        <footer class="mt-16 text-center text-gray-600 text-base">
+            <p>&copy; 2025 Cognifyz Technologies. All rights reserved.</p>
+            <p class="mt-2">Have questions? Reach out to us at: <a href="mailto:internships@cognifyz.com" class="text-blue-600 hover:underline font-medium">internships@cognifyz.com</a></p>
+            <p class="mt-1">Explore more about us: <a href="https://www.cognifyz.com" target="_blank" class="text-blue-600 hover:underline font-medium">www.cognifyz.com</a></p>
+        </footer>
+    </div>
+
+    <!-- Application Modal (Reusing existing ID and logic for simplicity but updated content) -->
+    <div id="applicationModalV2" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-button" id="closeModalButtonV2">&times;</span>
+            <h3 class="text-3xl font-bold text-gray-900 mb-6 text-center">Submit Your Internship Application</h3>
+            <form id="applicationFormV2" class="space-y-5">
+                <div>
+                    <label for="fullNameV2" class="block text-base font-medium text-gray-700 mb-1">Full Name</label>
+                    <input type="text" id="fullNameV2" name="fullName" class="mt-1 block w-full px-4 py-2.5 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-base" required>
+                </div>
+                <div>
+                    <label for="emailV2" class="block text-base font-medium text-gray-700 mb-1">Email Address</label>
+                    <input type="email" id="emailV2" name="email" class="mt-1 block w-full px-4 py-2.5 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-base" required>
+                </div>
+                <div>
+                    <label for="coverLetterV2" class="block text-base font-medium text-gray-700 mb-1">Cover Letter / Message</label>
+                    <textarea id="coverLetterV2" name="coverLetter" rows="6" class="mt-1 block w-full px-4 py-2.5 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-base" placeholder="Tell us about your passion for web development, relevant projects, and why you're excited to intern with Cognifyz Technologies..." required></textarea>
+                </div>
+                <div id="formMessageV2" class="text-center mt-5 text-red-600 font-medium"></div>
+                <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3.5 px-6 rounded-lg text-lg transition duration-300 ease-in-out transform hover:scale-105 shadow-md">
+                    Submit Application
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const applyButton = document.getElementById('applyButtonV2');
+            const applicationModal = document.getElementById('applicationModalV2');
+            const closeModalButton = document.getElementById('closeModalButtonV2');
+            const applicationForm = document.getElementById('applicationFormV2');
+            const formMessage = document.getElementById('formMessageV2');
+
+            // Open the modal when "Apply Now" is clicked
+            applyButton.addEventListener('click', function() {
+                applicationModal.classList.add('open');
+            });
+
+            // Close the modal when the close button is clicked
+            closeModalButton.addEventListener('click', function() {
+                applicationModal.classList.remove('open');
+                // Clear form fields and message when closing
+                applicationForm.reset();
+                formMessage.textContent = '';
+                formMessage.classList.remove('text-green-600', 'text-red-600');
+            });
+
+            // Close the modal if clicked outside the content area
+            applicationModal.addEventListener('click', function(event) {
+                if (event.target === applicationModal) {
+                    applicationModal.classList.remove('open');
+                    applicationForm.reset();
+                    formMessage.textContent = '';
+                    formMessage.classList.remove('text-green-600', 'text-red-600');
+                }
+            });
+
+            // Handle form submission
+            applicationForm.addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent default form submission
+
+                const fullName = document.getElementById('fullNameV2').value.trim();
+                const email = document.getElementById('emailV2').value.trim();
+                const coverLetter = document.getElementById('coverLetterV2').value.trim();
+
+                if (!fullName || !email || !coverLetter) {
+                    formMessage.textContent = 'Please fill in all fields.';
+                    formMessage.classList.remove('text-green-600');
+                    formMessage.classList.add('text-red-600');
+                    return;
+                }
+
+                // Simulate form submission (in a real app, you'd send this to a server)
+                console.log('Application Submitted (V2):');
+                console.log('Full Name:', fullName);
+                console.log('Email:', email);
+                console.log('Cover Letter:', coverLetter);
+
+                formMessage.textContent = 'Application submitted successfully! We will be in touch shortly.';
+                formMessage.classList.remove('text-red-600');
+                formMessage.classList.add('text-green-600');
+
+                // Optionally, clear the form after successful submission
+                applicationForm.reset();
+
+                // You could also close the modal automatically after a delay
+                // setTimeout(() => {
+                //     applicationModal.classList.remove('open');
+                //     formMessage.textContent = '';
+                //     formMessage.classList.remove('text-green-600');
+                // }, 3000);
+            });
+        });
+    </script>
+</body>
+</html>
